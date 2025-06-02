@@ -12,12 +12,12 @@ import (
 // 	r.GET("/get", controller.GetUsers)
 // }
 
-func SetupRouter(userController *controller.UserController) *gin.Engine{
+func SetupRouter(userController *controller.UserController,orderController *controller.OrderController) *gin.Engine{
 	r:=gin.Default()
 
 	//users Endpoint
 	r.GET("/users",userController.GetAllUsers)
 	r.GET("/userById",userController.GetUserById)
-
+    r.POST("/createOrder",orderController.CreateOrder)
 	return r
 }

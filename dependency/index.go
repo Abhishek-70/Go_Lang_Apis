@@ -8,6 +8,7 @@ import (
 
 type Container struct {
 	UserController *controller.UserController
+	OrderController *controller.OrderController
 }
 
 func BuildContainer() *Container {
@@ -17,8 +18,13 @@ func BuildContainer() *Container {
 	userRepo := respositories.NewUserRepsitory()
 	userService := services.NewUserService(userRepo)
 	userController := controller.NewUserController(userService)
+    
+	orderRepo :=respositories.NewOrderRepository()
+	orderService:= services.NewOrderService(orderRepo)
+	orderController:= controller.NewOrderController(orderService)
 
 	return &Container{
 		UserController: userController,
+		OrderController: orderController,
 	}
 }

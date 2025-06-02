@@ -15,6 +15,6 @@ func main() {
 	container := dependency.BuildContainer()
 
 	//setup routers
-	r := routes.SetupRouter(container.UserController)
+	r := routes.SetupRouter(container.UserController,container.OrderController)
 	r.Run(":4002")
 }

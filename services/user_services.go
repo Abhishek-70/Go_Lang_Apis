@@ -16,10 +16,7 @@ type userService struct {
 	repo interfaces.UserRepository
 }
 
-// pass the repository dependency
-func NewUserService(r interfaces.UserRepository) UserService {
-	return &userService{repo: r}
-}
+//declare all the method implementation from the repository
 
 func (s *userService) GetAllUsers() []models.User {
 	return s.repo.GetAllUsers()
@@ -29,4 +26,9 @@ func (s *userService) GetAllUsers() []models.User {
 
 func (s *userService) GetUserById() models.User{
 	return s.repo.GetUsersById()
+}
+
+// pass the repository dependency
+func NewUserService(r interfaces.UserRepository) UserService {
+	return &userService{repo: r}
 }
